@@ -1,0 +1,26 @@
+<div *ngIf="infoService.arrPersonas.length !== 0">
+  <ion-card *ngFor = "let item of infoService.arrPersonas" [ngClass]= "{'m' : item.sex, 'f': !item.sex}">
+    <ion-card-header>
+
+    <ion-card-title>{{item.strNombre}}</ion-card-title>
+    <ion-card-title>{{item.intNumero}}</ion-card-title>
+    <ion-card-title>{{item.strCorreo}}</ion-card-title>
+    <ion-card-title>Nacido el: {{item.date|date}}</ion-card-title>
+    
+    <ion-card-title *ngIf="infoService.blnShow == true">
+      {{item.strNotas}}
+    </ion-card-title>
+    
+    <div style="text-align: right;">
+      <ion-button (click)= "infoService.eliminar(item)">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button> 
+    </div>
+
+    </ion-card-header>
+  </ion-card>
+
+</div>
+<div *ngIf="infoService.arrPersonas.length == 0">
+  <h1>No se ha agregado contactos.</h1>
+</div>
